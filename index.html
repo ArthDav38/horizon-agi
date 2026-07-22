@@ -1123,60 +1123,74 @@
 
     <div>
       <form class="contact-form" id="contactForm" novalidate>
-        <div class="form-row">
-          <div class="field">
-            <label for="name">Nom <span class="required-mark">*</span></label>
-            <input type="text" id="name" name="name" placeholder="Votre nom" required autocomplete="name">
-            <span class="field-error" id="name-error"></span>
-          </div>
-          <div class="field">
-            <label for="email">Email <span class="required-mark">*</span></label>
-            <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="email">
-            <span class="field-error" id="email-error"></span>
-          </div>
-        </div>
+  <div class="form-row">
+    <div class="field">
+      <label for="name">Nom <span class="required-mark">*</span></label>
+      <input type="text" id="name" name="name" placeholder="Votre nom" required autocomplete="name">
+      <span class="field-error" id="name-error"></span>
+    </div>
+    <div class="field">
+      <label for="email">Email <span class="required-mark">*</span></label>
+      <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="email">
+      <span class="field-error" id="email-error"></span>
+    </div>
+  </div>
 
-        <div class="field">
-          <label for="profile">Vous êtes</label>
-          <select id="profile" name="profile">
-            <option value="etudiant">Étudiant·e</option>
-            <option value="asso">Association étudiante</option>
-            <option value="etablissement">Établissement / Enseignant·e</option>
-            <option value="organisation">Organisation AI Safety</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
+  <div class="form-row">
+    <div class="field">
+      <label for="organisation">Organisation</label>
+      <input type="text" id="organisation" name="organisation" placeholder="École, entreprise, association..." autocomplete="organization">
+      <span class="field-error" id="organisation-error"></span>
+    </div>
+    <div class="field">
+      <label for="profile">Vous êtes</label>
+      <select id="profile" name="profile">
+        <option value="etudiant">Étudiant·e</option>
+        <option value="chercheur">Chercheur·se</option>
+        <option value="asso">Association étudiante</option>
+        <option value="etablissement">Établissement / Enseignant·e</option>
+        <option value="organisation">Organisation AI Safety</option>
+        <option value="autre">Autre</option>
+      </select>
+    </div>
+  </div>
 
-        <div class="field">
-          <label for="message">Message <span class="required-mark">*</span></label>
-          <textarea id="message" name="message" placeholder="Dites-nous-en plus..." required></textarea>
-          <span class="field-error" id="message-error"></span>
-        </div>
+  <div class="field">
+    <label for="linkedin">LinkedIn <span style="color:var(--mist); text-transform:none; font-family:'IBM Plex Sans', sans-serif; font-size:12px; letter-spacing:0;">(facultatif)</span></label>
+    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/votre-profil" autocomplete="url">
+    <span class="field-error" id="linkedin-error"></span>
+  </div>
 
-        <!-- Consentement explicite RGPD — obligatoire -->
-        <div class="consent-block">
-          <label class="consent-label">
-            <input type="checkbox" id="consent" name="consent" required>
-            <span class="consent-check"></span>
-            <span class="consent-text">
-              J'ai lu et j'accepte que mes données personnelles soient traitées par Horizon AGI pour me répondre, conformément à la politique de confidentialité décrite ci-contre. Je sais que je peux retirer mon consentement à tout moment. <span class="required-mark">*</span>
-            </span>
-          </label>
-          <span class="field-error" id="consent-error"></span>
-        </div>
+  <div class="field">
+    <label for="message">Message <span class="required-mark">*</span></label>
+    <textarea id="message" name="message" placeholder="Dites-nous-en plus..." required></textarea>
+    <span class="field-error" id="message-error"></span>
+  </div>
 
-        <!-- Honeypot anti-spam invisible -->
-        <div style="display:none" aria-hidden="true">
-          <input type="text" name="website" tabindex="-1" autocomplete="off">
-        </div>
+  <!-- Consentement explicite RGPD — obligatoire -->
+  <div class="consent-block">
+    <label class="consent-label">
+      <input type="checkbox" id="consent" name="consent" required>
+      <span class="consent-check"></span>
+      <span class="consent-text">
+        J'ai lu et j'accepte que mes données personnelles soient traitées par Horizon AGI pour me répondre, conformément à la politique de confidentialité décrite ci-contre. Je sais que je peux retirer mon consentement à tout moment. <span class="required-mark">*</span>
+      </span>
+    </label>
+    <span class="field-error" id="consent-error"></span>
+  </div>
 
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <span class="btn-label">Envoyer le message</span>
-          <span class="btn-loading" aria-hidden="true">Envoi en cours…</span>
-        </button>
+  <!-- Honeypot anti-spam invisible -->
+  <div style="display:none" aria-hidden="true">
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </div>
 
-        <p class="form-note">// champs marqués <span class="required-mark">*</span> obligatoires · données hébergées en Europe</p>
-      </form>
+  <button type="submit" class="submit-btn" id="submitBtn">
+    <span class="btn-label">Envoyer le message</span>
+    <span class="btn-loading" aria-hidden="true">Envoi en cours…</span>
+  </button>
+
+  <p class="form-note">// champs marqués <span class="required-mark">*</span> obligatoires · données hébergées en Europe</p>
+</form>
 
       <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
         <div class="form-success-title">Message reçu.</div>
@@ -1267,12 +1281,13 @@
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5d3Nyb2FvY2pscHJuY3d2aXhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MDYwMzQsImV4cCI6MjA5ODk4MjAzNH0.BnVgQCCv1_KdpFUBnzO-f7v5BYAnJWqMJJQvtJspcd8';   // clé anon/public
 
   // ── Validation helpers ──
-  const validators = {
-    name:    v => v.trim().length >= 2   ? '' : 'Merci d\'indiquer votre nom (2 caractères minimum).',
-    email:   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Adresse email invalide.',
-    message: v => v.trim().length >= 10  ? '' : 'Le message doit faire au moins 10 caractères.',
-    consent: v => v ? '' : 'Vous devez accepter le traitement de vos données pour envoyer le formulaire.',
-  };
+const validators = {
+  name:      v => v.trim().length >= 2   ? '' : 'Merci d\'indiquer votre nom (2 caractères minimum).',
+  email:     v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Adresse email invalide.',
+  linkedin:  v => (!v.trim() || /^https?:\/\/.+/i.test(v.trim())) ? '' : 'Le lien doit commencer par http:// ou https://',
+  message:   v => v.trim().length >= 10  ? '' : 'Le message doit faire au moins 10 caractères.',
+  consent:   v => v ? '' : 'Vous devez accepter le traitement de vos données pour envoyer le formulaire.',
+};
 
   function setFieldState(id, errorMsg) {
     const input = document.getElementById(id);
@@ -1287,29 +1302,31 @@
     }
   }
 
-  function validateAll() {
-    const nom      = document.getElementById('name').value;
-    const email    = document.getElementById('email').value;
-    const message  = document.getElementById('message').value;
-    const consent  = document.getElementById('consent').checked;
+function validateAll() {
+  const nom       = document.getElementById('name').value;
+  const email     = document.getElementById('email').value;
+  const linkedin  = document.getElementById('linkedin').value;
+  const message   = document.getElementById('message').value;
+  const consent   = document.getElementById('consent').checked;
 
-    const errors = {
-      name:    validators.name(nom),
-      email:   validators.email(email),
-      message: validators.message(message),
-      consent: validators.consent(consent),
-    };
+  const errors = {
+    name:     validators.name(nom),
+    email:    validators.email(email),
+    linkedin: validators.linkedin(linkedin),
+    message:  validators.message(message),
+    consent:  validators.consent(consent),
+  };
 
-    Object.entries(errors).forEach(([id, msg]) => setFieldState(id, msg));
-    return Object.values(errors).every(e => e === '');
-  }
+  Object.entries(errors).forEach(([id, msg]) => setFieldState(id, msg));
+  return Object.values(errors).every(e => e === '');
+}
 
   // Validation live sur blur
-  ['name', 'email', 'message'].forEach(id => {
+  ['name', 'email', 'linkedin', 'message'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('blur', () => {
       setFieldState(id, validators[id](el.value));
-    });
+   });
   });
 
   // ── Supabase insert ──
@@ -1353,10 +1370,11 @@
     const payload = {
       nom:          document.getElementById('name').value.trim(),
       email:        document.getElementById('email').value.trim().toLowerCase(),
+      organisation: document.getElementById('organisation').value.trim(),
       profil:       document.getElementById('profile').value,
+      linkedin:     document.getElementById('linkedin').value.trim(),
       message:      document.getElementById('message').value.trim(),
       consentement: true,
-      // On ne stocke PAS l'IP côté client — Supabase peut le faire server-side si besoin
     };
 
     try {
