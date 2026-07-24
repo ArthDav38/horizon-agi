@@ -4,49 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Horizon AGI — Comprendre l'IA avant qu'elle ne nous dépasse</title>
-<meta name="description" content="Collectif de sensibilisation aux risques de l'intelligence artificielle avancée. Interventions, ressources et communauté francophone.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="description" content="Association de sensibilisation aux enjeux et risques de l'intelligence artificielle avancée. Conférences, workshops, hackathons et événements en France.">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --night:     #0A0D14;
-    --night2:    #11151F;
-    --steel:     #1C2433;
-    --line:      #2A3142;
-    --line2:     #232A3A;
-    --mist:      #545E72;
-    --paper:     #EDE9E1;
-    --paper-dim: #9B9890;
-    --copper:    #D97A3D;
-    --copper-dim:#D97A3D2E;
+    --navy:      #0B1E3D;
+    --navy2:     #0F2A52;
+    --navy-line: #1E3A63;
+    --white:     #FFFFFF;
+    --off:       #F4F6F9;
+    --ink-dim:   #5A6B85;
+    --orange:    #E8722C;
+    --orange-dim:#E8722C1F;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--night);
-    color: var(--paper);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.65;
+    background: var(--white);
+    color: var(--navy);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
     overflow-x: hidden;
   }
 
   a { color: inherit; text-decoration: none; }
-  ::selection { background: var(--copper-dim); color: var(--paper); }
-
-  .serif {
-    font-family: 'Newsreader', serif;
-  }
-
-  .mono {
-    font-family: 'IBM Plex Mono', monospace;
-  }
+  ::selection { background: var(--orange-dim); color: var(--navy); }
 
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-    outline: 2px solid var(--copper);
+    outline: 2px solid var(--orange);
     outline-offset: 3px;
   }
 
@@ -59,62 +47,47 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 6vw;
-    height: 76px;
-    background: rgba(10,13,20,0.85);
-    backdrop-filter: blur(10px);
+    height: 72px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s;
   }
 
-  nav.scrolled { border-bottom-color: var(--line2); }
-
-  .nav-mark {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
+  nav.scrolled { border-bottom-color: #E4E8EE; }
 
   .nav-mark-text {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-size: 19px;
-    font-weight: 500;
-    color: var(--paper);
-  }
-
-  .nav-mark-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--copper);
-    letter-spacing: 0.06em;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 0;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .nav-links a:not(.nav-cta) {
-    color: var(--paper-dim);
-    transition: color 0.25s;
+    color: var(--ink-dim);
+    transition: color 0.2s;
     padding: 10px 18px;
   }
 
-  .nav-links a:not(.nav-cta):hover { color: var(--paper); }
+  .nav-links a:not(.nav-cta):hover { color: var(--navy); }
 
   .nav-cta {
-    margin-left: 12px;
-    background: var(--paper);
-    color: var(--night) !important;
-    padding: 9px 20px;
-    font-size: 12.5px !important;
-    font-weight: 500;
-    transition: background 0.25s;
+    margin-left: 10px;
+    background: var(--navy);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    font-size: 13.5px !important;
+    font-weight: 700;
+    transition: background 0.2s;
   }
 
-  .nav-cta:hover { background: var(--copper); }
+  .nav-cta:hover { background: var(--orange); }
 
   @media (max-width: 780px) {
     .nav-links a:not(.nav-cta) { display: none; }
@@ -123,503 +96,201 @@
   /* ══════════════ HERO ══════════════ */
   .hero {
     position: relative;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    overflow: hidden;
-    background: linear-gradient(
-      180deg,
-      var(--night) 0%,
-      var(--night) 44%,
-      #141A29 64%,
-      #1A2134 80%,
-      #212A40 100%
-    );
-    padding-top: 76px;
-  }
-
-  /* Instrument-style horizon: a measured line, not a decorative gradient */
-  .instrument {
-    position: absolute;
-    left: 0; right: 0;
-    top: 58%;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .instrument-line {
-    position: relative;
-    height: 1px;
-    background: var(--line);
-  }
-
-  .instrument-line::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--copper) 50%, transparent);
-    opacity: 0.6;
-  }
-
-  .tick {
-    position: absolute;
-    top: -4px;
-    width: 1px;
-    height: 9px;
-    background: var(--mist);
-    opacity: 0.5;
-  }
-
-  .tick.major {
-    height: 14px;
-    top: -7px;
-    background: var(--paper-dim);
-    opacity: 0.4;
-  }
-
-  .tick-label {
-    position: absolute;
-    top: 14px;
-    transform: translateX(-50%);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--mist);
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-
-  .glow-point {
-    position: absolute;
-    width: 340px;
-    height: 340px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, var(--copper-dim) 0%, transparent 70%);
-    opacity: 0.7;
-    z-index: 0;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    padding-top: 72px;
+    border-bottom: 1px solid #E4E8EE;
   }
 
   .hero-grid {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 40px;
-    padding: 0 6vw 100px;
-  }
-
-  .hero-left {
-    max-width: 760px;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 80px 6vw;
   }
 
   .hero-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--copper);
-    letter-spacing: 0.05em;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .hero-tag .dot {
-    width: 5px; height: 5px;
-    background: var(--copper);
-    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
   }
 
   h1.hero-title {
-    font-family: 'Newsreader', serif;
-    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.005em;
-    color: var(--paper);
-    margin-bottom: 28px;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    margin-bottom: 26px;
+    max-width: 820px;
   }
 
   h1.hero-title .accent {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--copper);
+    color: var(--orange);
   }
 
   .hero-sub {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: clamp(0.98rem, 1.3vw, 1.08rem);
-    color: var(--paper-dim);
-    max-width: 520px;
-    font-weight: 300;
-    line-height: 1.75;
-    margin-bottom: 8px;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: var(--ink-dim);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
   }
 
-  .hero-right {
+  .hero-actions {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 18px;
-    padding-bottom: 8px;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
   .btn-primary {
-    background: var(--paper);
-    color: var(--night);
-    padding: 15px 32px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    transition: background 0.25s, transform 0.25s;
+    background: var(--navy);
+    color: var(--white);
+    padding: 15px 30px;
+    font-size: 14.5px;
+    font-weight: 700;
+    transition: background 0.2s;
     display: inline-block;
-    font-family: 'IBM Plex Sans', sans-serif;
   }
 
-  .btn-primary:hover {
-    background: var(--copper);
-    color: var(--night);
-    transform: translateY(-1px);
+  .btn-primary:hover { background: var(--orange); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--navy);
+    padding: 15px 30px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border: 1px solid var(--navy-line);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
   }
 
-  .btn-text {
-    font-size: 13px;
-    color: var(--paper-dim);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.25s;
-  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
 
-  .btn-text:hover { color: var(--paper); }
-  .btn-text svg { width: 13px; height: 13px; }
-
-  @media (max-width: 780px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-right { align-items: flex-start; }
-  }
-
-  /* ══════════════ SECTIONS — varied layouts ══════════════ */
+  /* ══════════════ SECTIONS ══════════════ */
   section { position: relative; }
 
   .label-row {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .label-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--copper);
-    border: 1px solid var(--copper-dim);
-    padding: 3px 8px;
+    gap: 12px;
+    margin-bottom: 18px;
   }
 
   .label-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--mist);
+    color: var(--orange);
   }
 
-  /* ── Section 1: Constat — asymmetric, text-heavy left, ledger right ── */
-  .constat {
-    background: var(--night2);
-    border-top: 1px solid var(--line2);
-    border-bottom: 1px solid var(--line2);
-    padding: 110px 6vw;
+  /* ── Mission (association) ── */
+  .mission {
+    background: var(--off);
+    border-bottom: 1px solid #E4E8EE;
+    padding: 100px 6vw;
   }
 
-  .constat-layout {
-    max-width: 1180px;
+  .mission-layout {
+    max-width: 900px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 0.55fr 0.45fr;
-    gap: 80px;
+    text-align: center;
   }
 
-  .constat-head {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-size: clamp(1.5rem, 2.6vw, 2.05rem);
-    font-weight: 400;
+  .mission-head {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 700;
     line-height: 1.4;
-    color: var(--paper);
-    margin-bottom: 32px;
-  }
-
-  .constat-body p {
-    color: var(--paper-dim);
-    font-size: 1rem;
-    line-height: 1.85;
-    margin-bottom: 20px;
-    max-width: 480px;
-  }
-
-  .constat-body strong {
-    color: var(--paper);
-    font-weight: 500;
-  }
-
-  .ledger {
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  .ledger-row {
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    gap: 20px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--line);
-    align-items: baseline;
-  }
-
-  .ledger-fig {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.6rem;
-    color: var(--copper);
-    font-weight: 500;
-  }
-
-  .ledger-desc {
-    font-size: 13px;
-    color: var(--paper-dim);
-    line-height: 1.6;
-  }
-
-  @media (max-width: 820px) {
-    .constat-layout { grid-template-columns: 1fr; gap: 48px; }
-  }
-
-  /* ── Section 2: Approche — side-by-side manifesto style, no cards ── */
-  .approche {
-    padding: 110px 6vw;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
-
-  .approche-title {
-    font-family: 'Newsreader', serif;
-    font-size: clamp(1.7rem, 3vw, 2.3rem);
-    font-weight: 400;
-    color: var(--paper);
-    max-width: 600px;
-    margin-bottom: 64px;
-    line-height: 1.3;
-  }
-
-  .axes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .axis {
-    padding: 0 44px 0 0;
-    position: relative;
-  }
-
-  .axis:first-child {
-    border-right: 1px solid var(--line);
-  }
-
-  .axis:nth-child(2) {
-    padding-left: 44px;
-    padding-right: 0;
-  }
-
-  .axis-mark {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--copper);
-    letter-spacing: 0.08em;
-    margin-bottom: 18px;
-  }
-
-  .axis-title {
-    font-family: 'Newsreader', serif;
-    font-size: 1.55rem;
-    font-weight: 500;
-    color: var(--paper);
-    margin-bottom: 18px;
-  }
-
-  .axis-desc {
-    font-size: 14px;
-    color: var(--paper-dim);
-    line-height: 1.8;
-    margin-bottom: 28px;
-    max-width: 420px;
-  }
-
-  .axis-items {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .axis-item {
-    font-size: 13.5px;
-    color: var(--paper);
-    padding: 14px 0;
-    border-top: 1px solid var(--line2);
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-
-  .axis-item:last-child { border-bottom: 1px solid var(--line2); }
-
-  .axis-item-mark {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--mist);
-    font-size: 11px;
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 780px) {
-    .axes { grid-template-columns: 1fr; }
-    .axis:first-child { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 48px; margin-bottom: 48px; padding-right: 0; }
-    .axis:nth-child(2) { padding-left: 0; }
-  }
-
-  /* ── Section 3: Équipe — full bleed strip, name as headline ── */
-  .equipe {
-    background: var(--night2);
-    border-top: 1px solid var(--line2);
-    border-bottom: 1px solid var(--line2);
-    padding: 0;
-  }
-
-  .member-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .member-block {
-    padding: 90px 6vw 90px 6vw;
-    position: relative;
-  }
-
-  .member-block:first-child {
-    border-right: 1px solid var(--line2);
-  }
-
-  .member-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--copper);
-    letter-spacing: 0.08em;
+    color: var(--navy);
     margin-bottom: 24px;
   }
 
-  .member-name {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    font-weight: 400;
-    color: var(--paper);
-    margin-bottom: 8px;
-    line-height: 1;
+  .mission-body p {
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
-  .member-role {
-    font-size: 13px;
-    color: var(--mist);
-    margin-bottom: 28px;
-  }
-
-  .member-bio {
-    font-size: 14px;
-    color: var(--paper-dim);
-    line-height: 1.8;
-    max-width: 420px;
-  }
-
-  @media (max-width: 780px) {
-    .member-strip { grid-template-columns: 1fr; }
-    .member-block:first-child { border-right: none; border-bottom: 1px solid var(--line2); }
-    .member-block { padding: 64px 6vw; }
-  }
-
-  /* ── Section 4: S'impliquer — numbered ledger, no boxes ── */
-  .impliquer {
-    padding: 110px 6vw;
+  /* ── Ce qu'on organise ── */
+  .organise {
+    padding: 100px 6vw;
     max-width: 1180px;
     margin: 0 auto;
   }
 
-  .impliquer-head {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
-    align-items: end;
-    margin-bottom: 64px;
-  }
-
-  .impliquer-title {
-    font-family: 'Newsreader', serif;
-    font-size: clamp(1.7rem, 3vw, 2.3rem);
-    font-weight: 400;
-    color: var(--paper);
-    max-width: 620px;
+  .organise-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--navy);
+    max-width: 640px;
+    margin-bottom: 56px;
     line-height: 1.3;
   }
 
-  .impliquer-note {
-    font-size: 13px;
-    color: var(--mist);
-    max-width: 220px;
-    line-height: 1.6;
-    text-align: right;
-  }
-
-  @media (max-width: 780px) {
-    .impliquer-head { grid-template-columns: 1fr; }
-    .impliquer-note { text-align: left; max-width: 100%; }
-  }
-
-  .contrib-row {
+  .org-grid {
     display: grid;
-    grid-template-columns: 90px 1fr 1fr;
-    gap: 24px;
-    padding: 30px 0;
-    border-top: 1px solid var(--line);
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid #E4E8EE;
   }
 
-  .contrib-row:last-child { border-bottom: 1px solid var(--line); }
-
-  .contrib-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--copper);
+  .org-item {
+    padding: 40px 32px 40px 0;
+    border-right: 1px solid #E4E8EE;
   }
 
-  .contrib-title {
-    font-family: 'Newsreader', serif;
+  .org-item:last-child { border-right: none; }
+
+  .org-item:nth-child(2) { padding-left: 32px; }
+  .org-item:nth-child(3) { padding-left: 32px; }
+
+  .org-mark {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .org-item-title {
     font-size: 1.15rem;
-    color: var(--paper);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
   }
 
-  .contrib-desc {
-    font-size: 13.5px;
-    color: var(--paper-dim);
-    line-height: 1.7;
+  .org-item-desc {
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.75;
   }
 
-  @media (max-width: 700px) {
-    .contrib-row { grid-template-columns: 1fr; gap: 8px; }
+  @media (max-width: 820px) {
+    .org-grid { grid-template-columns: 1fr; }
+    .org-item { border-right: none; border-bottom: 1px solid #E4E8EE; padding: 36px 0; }
+    .org-item:nth-child(2), .org-item:nth-child(3) { padding-left: 0; }
+    .org-item:last-child { border-bottom: none; }
   }
 
   /* ══════════════ CONTACT ══════════════ */
   .contact {
-    background: #0D1119;
-    padding: 130px 6vw;
-    border-top: 1px solid var(--line2);
+    background: var(--navy);
+    padding: 110px 6vw;
+    color: var(--white);
   }
 
   .contact-layout {
@@ -627,27 +298,26 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 0.85fr 1fr;
-    gap: 80px;
+    gap: 72px;
   }
 
   .contact-title {
-    font-family: 'Newsreader', serif;
-    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
-    font-weight: 400;
-    color: var(--paper);
-    line-height: 1.25;
-    margin-bottom: 20px;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 18px;
   }
 
   .contact-title em {
-    font-style: italic;
-    color: var(--copper);
+    font-style: normal;
+    color: var(--orange);
   }
 
   .contact-sub {
-    color: var(--paper-dim);
+    color: #B8C4D9;
     font-size: 14px;
-    max-width: 360px;
+    max-width: 380px;
     line-height: 1.75;
   }
 
@@ -657,82 +327,79 @@
     gap: 22px;
   }
 
-  .field { display: flex; flex-direction: column; gap: 10px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
 
   .field label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--mist);
+    color: #8FA1BE;
   }
 
   .field input, .field select, .field textarea {
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--line);
-    color: var(--paper);
+    border-bottom: 1px solid #2C4368;
+    color: var(--white);
     padding: 8px 2px 12px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
-    font-weight: 300;
-    transition: border-color 0.25s;
+    font-weight: 400;
+    transition: border-color 0.2s;
   }
 
   .field select {
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23545E72' fill='none' stroke-width='1.3'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238FA1BE' fill='none' stroke-width='1.3'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 2px center;
     cursor: pointer;
   }
 
-  .field select option { background: var(--steel); color: var(--paper); }
+  .field select option { background: var(--navy2); color: var(--white); }
 
-  .field input::placeholder, .field textarea::placeholder { color: #3A4254; }
+  .field input::placeholder, .field textarea::placeholder { color: #4A6084; }
 
   .field input:focus, .field select:focus, .field textarea:focus {
     outline: none;
-    border-color: var(--copper);
+    border-color: var(--orange);
   }
 
-  .field textarea { resize: vertical; min-height: 80px; font-family: 'IBM Plex Sans', sans-serif; }
+  .field textarea { resize: vertical; min-height: 80px; font-family: Arial, Helvetica, sans-serif; }
 
-  .form-row { display: flex; gap: 28px; }
+  .form-row { display: flex; gap: 26px; }
   .form-row .field { flex: 1; }
 
   .submit-btn {
-    background: var(--paper);
-    color: var(--night);
+    background: var(--orange);
+    color: var(--white);
     border: none;
     padding: 16px;
     font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.25s;
+    transition: background 0.2s;
     margin-top: 6px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
-  .submit-btn:hover { background: var(--copper); }
+  .submit-btn:hover { background: #D9611B; }
 
   .form-note {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--mist);
+    font-size: 11.5px;
+    color: #7A8CAB;
   }
 
   .required-mark {
-    color: var(--copper);
+    color: var(--orange);
     font-style: normal;
   }
 
   .field-error {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
-    color: #E07070;
+    color: #FF9B7A;
     margin-top: 4px;
     display: block;
     min-height: 16px;
@@ -741,13 +408,11 @@
   .field input.invalid,
   .field textarea.invalid,
   .field select.invalid {
-    border-bottom-color: #E07070;
+    border-bottom-color: #FF9B7A;
   }
 
   /* ── Consent checkbox ── */
-  .consent-block {
-    margin-top: 4px;
-  }
+  .consent-block { margin-top: 4px; }
 
   .consent-label {
     display: grid;
@@ -767,7 +432,7 @@
   .consent-check {
     width: 16px;
     height: 16px;
-    border: 1px solid var(--mist);
+    border: 1px solid #4A6084;
     background: transparent;
     display: flex;
     align-items: center;
@@ -778,124 +443,88 @@
   }
 
   .consent-label input:checked + .consent-check {
-    border-color: var(--copper);
-    background: var(--copper);
+    border-color: var(--orange);
+    background: var(--orange);
   }
 
   .consent-label input:checked + .consent-check::after {
     content: '';
     width: 8px;
     height: 5px;
-    border-left: 1.5px solid var(--night);
-    border-bottom: 1.5px solid var(--night);
+    border-left: 1.5px solid var(--navy);
+    border-bottom: 1.5px solid var(--navy);
     transform: rotate(-45deg) translateY(-1px);
     display: block;
   }
 
   .consent-label input:focus-visible + .consent-check {
-    outline: 2px solid var(--copper);
+    outline: 2px solid var(--orange);
     outline-offset: 2px;
   }
 
   .consent-text {
     font-size: 12.5px;
-    color: var(--paper-dim);
+    color: #B8C4D9;
     line-height: 1.6;
   }
+
+  .consent-text a { color: var(--orange); }
 
   /* ── Submit button states ── */
   .submit-btn .btn-loading { display: none; }
   .submit-btn.loading .btn-label { display: none; }
   .submit-btn.loading .btn-loading { display: inline; }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
   /* ── Success / Error states ── */
-  .form-success {
-    display: none;
-  }
-
+  .form-success { display: none; }
   .form-success.visible { display: block; }
 
   .form-success-title {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    color: var(--copper);
-    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 1.5rem;
     margin-bottom: 10px;
   }
 
   .form-success-text {
     font-size: 14px;
-    color: var(--paper-dim);
+    color: #B8C4D9;
     line-height: 1.7;
   }
 
   .form-error-global {
     display: none;
     margin-top: 16px;
-    border: 1px solid rgba(224,112,112,0.3);
-    border-left: 3px solid #E07070;
+    border-left: 3px solid #FF9B7A;
     padding: 16px 18px;
-    background: rgba(224,112,112,0.06);
+    background: rgba(255,155,122,0.08);
   }
 
   .form-error-global.visible { display: block; }
 
   .form-error-title {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
-    color: #E07070;
+    font-weight: 700;
+    color: #FF9B7A;
     margin-bottom: 6px;
   }
 
   .form-error-text {
     font-size: 13px;
-    color: var(--paper-dim);
+    color: #B8C4D9;
     line-height: 1.6;
   }
 
-  /* ── RGPD notice ── */
-  .rgpd-notice {
-    margin-top: 32px;
-    padding: 20px 22px;
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--mist);
-    background: rgba(255,255,255,0.02);
-  }
-
-  .rgpd-title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--mist);
-    margin-bottom: 12px;
-  }
-
-  .rgpd-notice p {
-    font-size: 12px;
-    color: var(--mist);
-    line-height: 1.7;
-    margin-bottom: 10px;
-    max-width: 400px;
-  }
-
-  .rgpd-notice p:last-child { margin-bottom: 0; }
-
-  .rgpd-notice strong {
-    color: var(--paper-dim);
-    font-weight: 500;
-  }
-
   @media (max-width: 820px) {
-    .contact-layout { grid-template-columns: 1fr; gap: 56px; }
+    .contact-layout { grid-template-columns: 1fr; gap: 52px; }
     .form-row { flex-direction: column; gap: 22px; }
   }
 
   /* ══════════════ FOOTER ══════════════ */
   footer {
-    border-top: 1px solid var(--line2);
-    padding: 36px 6vw;
+    border-top: 1px solid #E4E8EE;
+    padding: 32px 6vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -904,27 +533,25 @@
   }
 
   .footer-mark {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
     font-size: 14px;
-    color: var(--mist);
+    font-weight: 700;
+    color: var(--ink-dim);
   }
 
   .footer-links {
     display: flex;
     gap: 26px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--mist);
+    font-size: 12px;
+    color: var(--ink-dim);
   }
 
-  .footer-links a:hover { color: var(--paper); }
+  .footer-links a:hover { color: var(--navy); }
 
   /* ══════════════ REVEAL ══════════════ */
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
   .reveal.visible { opacity: 1; transform: none; }
@@ -938,161 +565,63 @@
 <body>
 
 <nav id="nav">
-  <div class="nav-mark">
-    <span class="nav-mark-text">Horizon AGI</span>
-  </div>
+  <div class="nav-mark-text">Horizon AGI</div>
   <div class="nav-links">
     <a href="#mission">Mission</a>
-    <a href="#approche">Approche</a>
-    <a href="#equipe">Équipe</a>
-    <a href="#impliquer">S'impliquer</a>
+    <a href="#organise">Ce qu'on organise</a>
     <a href="#contact" class="nav-cta">Nous écrire</a>
   </div>
 </nav>
 
 <!-- ══════════════ HERO ══════════════ -->
 <header class="hero">
-  <div class="glow-point" id="glowPoint" style="left:38%; top:58%;"></div>
-
-  <div class="instrument" id="instrument">
-    <div class="instrument-line" id="instrumentLine"></div>
-  </div>
-
   <div class="hero-grid">
-    <div class="hero-left">
-      <div class="hero-tag"><span class="dot"></span>COLLECTIF FRANCOPHONE · FONDÉ 2026</div>
-      <h1 class="hero-title">Comprendre l'IA<br><span class="accent">avant</span> qu'elle ne nous dépasse.</h1>
-      <p class="hero-sub">Horizon AGI sensibilise les futurs ingénieurs, juristes et décideurs français aux risques du développement de l'intelligence artificielle avancée — avant que ces enjeux ne deviennent irréversibles.</p>
-    </div>
-    <div class="hero-right">
-      <a href="#impliquer" class="btn-primary">Rejoindre le collectif</a>
-      <a href="#mission" class="btn-text">Découvrir la mission
-        <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg>
-      </a>
+    <div class="hero-tag">Association · Fondée en 2026</div>
+    <h1 class="hero-title">Comprendre l'IA <span class="accent">avant</span> qu'elle ne nous dépasse.</h1>
+    <p class="hero-sub">On sensibilise les étudiants, futurs ingénieurs et décideurs, aux risques que pose le développement rapide de l'intelligence artificielle.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Nous contacter</a>
+      <a href="#mission" class="btn-secondary">En savoir plus</a>
     </div>
   </div>
 </header>
 
-<!-- ══════════════ CONSTAT ══════════════ -->
-<section class="constat" id="mission">
-  <div class="constat-layout reveal">
-    <div>
-      <div class="label-row">
-        <span class="label-num">01</span>
-        <span class="label-text">Le constat</span>
-      </div>
-      <div class="constat-head">La France forme ses décideurs de demain sans leur donner les clés de l'un des enjeux les plus déterminants du siècle.</div>
-      <div class="constat-body">
-        <p>Les systèmes d'intelligence artificielle progressent à un rythme que peu d'institutions parviennent à suivre. Pendant que cette trajectoire s'accélère, <strong>les cursus français — écoles d'ingénieurs, Sciences Po, facultés de droit — n'intègrent presque jamais de contenu sérieux sur les risques que pose cette accélération.</strong></p>
-        <p>Le savoir existe. Il est documenté, débattu, mesuré par des chercheurs du monde entier. Mais il reste concentré dans des cercles techniques anglophones, loin des étudiants français qui occuperont demain des postes à responsabilité.</p>
-        <p>Horizon AGI existe pour combler cet écart, pendant qu'il est encore temps de le faire dans de bonnes conditions.</p>
-      </div>
+<!-- ══════════════ MISSION ══════════════ -->
+<section class="mission" id="mission">
+  <div class="mission-layout reveal">
+    <div class="label-row" style="justify-content:center">
+      <span class="label-text">Notre mission</span>
     </div>
-
-    <div class="ledger">
-      <div class="ledger-row">
-        <div class="ledger-fig">0h</div>
-        <div class="ledger-desc">de formation obligatoire sur les risques de l'IA dans la majorité des cursus d'ingénieur français</div>
-      </div>
-      <div class="ledger-row">
-        <div class="ledger-fig">5–10</div>
-        <div class="ledger-desc">années avant que les étudiants d'aujourd'hui n'occupent des postes à responsabilité sur ces sujets</div>
-      </div>
-      <div class="ledger-row">
-        <div class="ledger-fig">02</div>
-        <div class="ledger-desc">profils fondateurs complémentaires — technique et gouvernance — pour couvrir l'ensemble du sujet</div>
-      </div>
+    <div class="mission-head">Former ceux qui vont construire et encadrer l'IA de demain.</div>
+    <div class="mission-body">
+      <p>Horizon AGI est une association qui sensibilise les étudiants — futurs ingénieurs, chercheurs, décideurs — aux enjeux et aux dangers du développement de l'intelligence artificielle avancée. Ce sont eux qui, dans quelques années, occuperont les postes où ces questions se poseront concrètement. On veut qu'ils y arrivent préparés.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ APPROCHE ══════════════ -->
-<section class="approche" id="approche">
+<!-- ══════════════ CE QU'ON ORGANISE ══════════════ -->
+<section class="organise" id="organise">
   <div class="reveal">
     <div class="label-row">
-      <span class="label-num">02</span>
-      <span class="label-text">Notre approche</span>
+      <span class="label-text">Ce qu'on organise</span>
     </div>
-    <div class="approche-title">Deux angles, une même urgence.</div>
+    <div class="organise-title">Ce qu'on fait, concrètement.</div>
 
-    <div class="axes">
-      <div class="axis">
-        <div class="axis-mark">VOLET TECHNIQUE</div>
-        <div class="axis-title">Pour les ingénieurs</div>
-        <div class="axis-desc">Comprendre ce que les systèmes actuels savent réellement faire, où se situent les limites de l'alignement, et pourquoi la trajectoire technique pose un problème de sécurité concret — pas une crainte abstraite.</div>
-        <div class="axis-items">
-          <div class="axis-item"><span class="axis-item-mark">→</span>Interventions en écoles d'ingénieurs</div>
-          <div class="axis-item"><span class="axis-item-mark">→</span>Décryptage des benchmarks et capacités réelles</div>
-          <div class="axis-item"><span class="axis-item-mark">→</span>Ressources techniques traduites et vulgarisées</div>
-        </div>
+    <div class="org-grid">
+      <div class="org-item">
+        <div class="org-mark">01</div>
+        <div class="org-item-title">Conférences et workshops</div>
+        <div class="org-item-desc">On intervient dans les écoles d'ingénieurs et les universités pour parler des risques liés à l'IA avancée — sous forme de conférences ou d'ateliers plus pratiques.</div>
       </div>
-
-      <div class="axis">
-        <div class="axis-mark">VOLET GOUVERNANCE</div>
-        <div class="axis-title">Pour les décideurs publics</div>
-        <div class="axis-desc">Saisir les enjeux géopolitiques de la course à l'IA, les angles morts de la régulation actuelle, et les leviers d'action pour les décideurs publics de demain.</div>
-        <div class="axis-items">
-          <div class="axis-item"><span class="axis-item-mark">→</span>Interventions à Sciences Po et en facultés de droit</div>
-          <div class="axis-item"><span class="axis-item-mark">→</span>Analyse des cadres réglementaires existants</div>
-          <div class="axis-item"><span class="axis-item-mark">→</span>Synthèses sur la dynamique géopolitique de l'IA</div>
-        </div>
+      <div class="org-item">
+        <div class="org-mark">02</div>
+        <div class="org-item-title">Hackathons</div>
+        <div class="org-item-desc">On organise des hackathons pour que les étudiants se frottent directement aux problèmes de sécurité et d'alignement de l'IA, pas juste en théorie.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ ÉQUIPE ══════════════ -->
-<section class="equipe" id="equipe">
-  <div class="member-strip reveal">
-    <div class="member-block">
-      <div class="member-tag">VOLET TECHNIQUE</div>
-      <div class="member-name">Arthur</div>
-      <div class="member-role">Co-fondateur</div>
-      <div class="member-bio">Formation d'ingénieur, expérience concrète en développement de systèmes IA. Porte le rapport technique du collectif sur l'évolution des capacités et des risques liés à l'IA avancée, et anime les interventions auprès des publics techniques.</div>
-    </div>
-    <div class="member-block">
-      <div class="member-tag">VOLET GOUVERNANCE</div>
-      <div class="member-name">Jeanne</div>
-      <div class="member-role">Co-fondatrice</div>
-      <div class="member-bio">Formation en relations internationales, spécialisée sur la gouvernance de l'IA et les dynamiques de violence politique. Construit le réseau francophone du collectif et porte le volet régulation et géopolitique des interventions.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ S'IMPLIQUER ══════════════ -->
-<section class="impliquer" id="impliquer">
-  <div class="reveal">
-    <div class="impliquer-head">
-      <div>
-        <div class="label-row">
-          <span class="label-num">03</span>
-          <span class="label-text">Rejoindre le collectif</span>
-        </div>
-        <div class="impliquer-title">Pas besoin d'être expert. Juste d'être prêt à contribuer une première fois.</div>
-      </div>
-      <div class="impliquer-note">Vous devenez officiellement membre au moment de votre première contribution — même modeste.</div>
-    </div>
-
-    <div class="contrib-list">
-      <div class="contrib-row">
-        <div class="contrib-num">01</div>
-        <div class="contrib-title">Préparer une intervention</div>
-        <div class="contrib-desc">Construire et présenter un exposé dans votre établissement, sur l'un des deux volets, avec le soutien du collectif.</div>
-      </div>
-      <div class="contrib-row">
-        <div class="contrib-num">02</div>
-        <div class="contrib-title">Animer un groupe de lecture</div>
-        <div class="contrib-desc">Organiser et faciliter une session de lecture collective autour d'un texte ou d'un papier de recherche en AI Safety.</div>
-      </div>
-      <div class="contrib-row">
-        <div class="contrib-num">03</div>
-        <div class="contrib-title">Publier une synthèse</div>
-        <div class="contrib-desc">Rédiger un compte-rendu ou une analyse d'un papier de recherche, en français, pour le rendre accessible.</div>
-      </div>
-      <div class="contrib-row">
-        <div class="contrib-num">04</div>
-        <div class="contrib-title">Enregistrer une lecture</div>
-        <div class="contrib-desc">Donner une voix française à un texte clé — de l'anglais écrit au français oral, pour rendre les ressources accessibles à l'écoute.</div>
+      <div class="org-item">
+        <div class="org-mark">03</div>
+        <div class="org-item-title">Mise en réseau</div>
+        <div class="org-item-desc">On monte des événements pour connecter les acteurs de l'IA en France — étudiants, chercheurs, entreprises et institutions qui travaillent sur ces sujets.</div>
       </div>
     </div>
   </div>
@@ -1103,103 +632,90 @@
   <div class="contact-layout reveal">
     <div>
       <div class="label-row">
-        <span class="label-num">04</span>
-        <span class="label-text">Contact</span>
+        <span class="label-text" style="color:var(--orange)">Contact</span>
       </div>
-      <div class="contact-title">Une question, une envie de contribuer, ou simplement curieux ?<br><em>Écrivez-nous.</em></div>
-      <div class="contact-sub">Nous répondons à chaque message — proposition d'intervention, candidature, ou simple question.</div>
-
-      <!-- Mention RGPD art. 13 -->
-      <div class="rgpd-notice">
-        <div class="rgpd-title">Vos données personnelles</div>
-        <p>Les données collectées via ce formulaire (nom, email, profil, message) sont traitées par Horizon AGI aux seules fins de vous répondre et de gérer notre relation avec vous.</p>
-        <p><strong>Base légale :</strong> consentement explicite (art. 6.1.a RGPD).<br>
-        <strong>Durée de conservation :</strong> 2 ans à compter de votre dernier contact.<br>
-        <strong>Destinataires :</strong> les co-fondateurs d'Horizon AGI uniquement. Aucune transmission à des tiers.<br>
-        <strong>Hébergement :</strong> base de données sécurisée, serveurs localisés en Europe (Frankfurt).</p>
-        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition. Pour exercer ces droits : <a href="mailto:contact@horizonagi.fr" style="color:var(--copper)">contact@horizonagi.fr</a>. En cas de réclamation, vous pouvez saisir la <a href="https://www.cnil.fr" target="_blank" rel="noopener" style="color:var(--copper)">CNIL</a>.</p>
-      </div>
+      <div class="contact-title">Une question, envie de nous rejoindre, ou juste curieux ?<br><em>Écrivez-nous.</em></div>
+      <div class="contact-sub">On répond à chaque message. Si vous voulez rejoindre l'association, participer à une intervention ou nous proposer un projet, c'est aussi par ici que ça se passe.</div>
     </div>
 
     <div>
       <form class="contact-form" id="contactForm" novalidate>
-  <div class="form-row">
-    <div class="field">
-      <label for="name">Nom <span class="required-mark">*</span></label>
-      <input type="text" id="name" name="name" placeholder="Votre nom" required autocomplete="name">
-      <span class="field-error" id="name-error"></span>
-    </div>
-    <div class="field">
-      <label for="email">Email <span class="required-mark">*</span></label>
-      <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="email">
-      <span class="field-error" id="email-error"></span>
-    </div>
-  </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Nom <span class="required-mark">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Votre nom" required autocomplete="name">
+            <span class="field-error" id="name-error"></span>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="required-mark">*</span></label>
+            <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="email">
+            <span class="field-error" id="email-error"></span>
+          </div>
+        </div>
 
-  <div class="form-row">
-    <div class="field">
-      <label for="organisation">Organisation</label>
-      <input type="text" id="organisation" name="organisation" placeholder="École, entreprise, association..." autocomplete="organization">
-      <span class="field-error" id="organisation-error"></span>
-    </div>
-    <div class="field">
-      <label for="profile">Vous êtes</label>
-      <select id="profile" name="profile">
-        <option value="etudiant">Étudiant·e</option>
-        <option value="chercheur">Chercheur·se</option>
-        <option value="asso">Association étudiante</option>
-        <option value="etablissement">Établissement / Enseignant·e</option>
-        <option value="organisation">Organisation AI Safety</option>
-        <option value="autre">Autre</option>
-      </select>
-    </div>
-  </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="organisation">Organisation</label>
+            <input type="text" id="organisation" name="organisation" placeholder="École, entreprise, association..." autocomplete="organization">
+            <span class="field-error" id="organisation-error"></span>
+          </div>
+          <div class="field">
+            <label for="profile">Vous êtes</label>
+            <select id="profile" name="profile">
+              <option value="etudiant">Étudiant·e</option>
+              <option value="chercheur">Chercheur·se</option>
+              <option value="asso">Association étudiante</option>
+              <option value="etablissement">Établissement / Enseignant·e</option>
+              <option value="organisation">Organisation AI Safety</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+        </div>
 
-  <div class="field">
-    <label for="linkedin">LinkedIn <span style="color:var(--mist); text-transform:none; font-family:'IBM Plex Sans', sans-serif; font-size:12px; letter-spacing:0;">(facultatif)</span></label>
-    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/votre-profil" autocomplete="url">
-    <span class="field-error" id="linkedin-error"></span>
-  </div>
+        <div class="field">
+          <label for="linkedin">LinkedIn <span style="color:#7A8CAB; text-transform:none; font-weight:400; font-size:11.5px;">(facultatif)</span></label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/votre-profil" autocomplete="url">
+          <span class="field-error" id="linkedin-error"></span>
+        </div>
 
-  <div class="field">
-    <label for="message">Message <span class="required-mark">*</span></label>
-    <textarea id="message" name="message" placeholder="Dites-nous-en plus..." required></textarea>
-    <span class="field-error" id="message-error"></span>
-  </div>
+        <div class="field">
+          <label for="message">Message <span class="required-mark">*</span></label>
+          <textarea id="message" name="message" placeholder="Dites-nous-en plus..." required></textarea>
+          <span class="field-error" id="message-error"></span>
+        </div>
 
-  <!-- Consentement explicite RGPD — obligatoire -->
-  <div class="consent-block">
-    <label class="consent-label">
-      <input type="checkbox" id="consent" name="consent" required>
-      <span class="consent-check"></span>
-      <span class="consent-text">
-        J'ai lu et j'accepte que mes données personnelles soient traitées par Horizon AGI pour me répondre, conformément à la politique de confidentialité décrite ci-contre. Je sais que je peux retirer mon consentement à tout moment. <span class="required-mark">*</span>
-      </span>
-    </label>
-    <span class="field-error" id="consent-error"></span>
-  </div>
+        <div class="consent-block">
+          <label class="consent-label">
+            <input type="checkbox" id="consent" name="consent" required>
+            <span class="consent-check"></span>
+            <span class="consent-text">
+              J'accepte que mes données soient utilisées par Horizon AGI pour me répondre. <span class="required-mark">*</span>
+            </span>
+          </label>
+          <span class="field-error" id="consent-error"></span>
+        </div>
 
-  <!-- Honeypot anti-spam invisible -->
-  <div style="display:none" aria-hidden="true">
-    <input type="text" name="website" tabindex="-1" autocomplete="off">
-  </div>
+        <!-- Honeypot anti-spam invisible -->
+        <div style="display:none" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
 
-  <button type="submit" class="submit-btn" id="submitBtn">
-    <span class="btn-label">Envoyer le message</span>
-    <span class="btn-loading" aria-hidden="true">Envoi en cours…</span>
-  </button>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="btn-label">Envoyer le message</span>
+          <span class="btn-loading" aria-hidden="true">Envoi en cours…</span>
+        </button>
 
-  <p class="form-note">// champs marqués <span class="required-mark">*</span> obligatoires · données hébergées en Europe</p>
-</form>
+        <p class="form-note">// champs marqués <span class="required-mark">*</span> obligatoires</p>
+      </form>
 
       <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
         <div class="form-success-title">Message reçu.</div>
-        <div class="form-success-text">Nous revenons vers vous très prochainement.<br><span style="font-size:12px;color:var(--mist)">Un email de confirmation vous a été transmis si votre adresse est valide.</span></div>
+        <div class="form-success-text">Nous revenons vers vous très prochainement.</div>
       </div>
 
       <div class="form-error-global" id="formErrorGlobal" role="alert" aria-live="polite">
         <div class="form-error-title">Une erreur s'est produite.</div>
-        <div class="form-error-text" id="formErrorText">Veuillez réessayer dans quelques instants ou nous écrire directement à <a href="mailto:contact@horizonagi.fr" style="color:var(--copper)">contact@horizonagi.fr</a>.</div>
+        <div class="form-error-text" id="formErrorText">Veuillez réessayer dans quelques instants ou nous écrire directement à <a href="mailto:contact@horizonagi.fr" style="color:var(--orange)">contact@horizonagi.fr</a>.</div>
       </div>
     </div>
   </div>
@@ -1209,12 +725,11 @@
   <div class="footer-mark">Horizon AGI</div>
   <div class="footer-links">
     <a href="#mission">MISSION</a>
-    <a href="#approche">APPROCHE</a>
-    <a href="#equipe">ÉQUIPE</a>
+    <a href="#organise">CE QU'ON ORGANISE</a>
     <a href="#contact">CONTACT</a>
   </div>
   <div class="footer-links">
-    <span style="color:var(--line2)">© 2026 — COLLECTIF FRANCOPHONE</span>
+    <span>© 2026 — HORIZON AGI</span>
   </div>
 </footer>
 
@@ -1225,26 +740,6 @@
     nav.classList.toggle('scrolled', window.scrollY > 10);
   }, { passive: true });
 
-  // ── Build instrument ticks ──
-  const line = document.getElementById('instrumentLine');
-  const totalTicks = 48;
-  for (let i = 0; i <= totalTicks; i++) {
-    const tick = document.createElement('div');
-    const isMajor = i % 6 === 0;
-    tick.className = 'tick' + (isMajor ? ' major' : '');
-    tick.style.left = (i / totalTicks * 100) + '%';
-    line.appendChild(tick);
-
-    if (isMajor) {
-      const label = document.createElement('div');
-      label.className = 'tick-label';
-      label.style.left = (i / totalTicks * 100) + '%';
-      const labels = ['CONSTAT', 'APPROCHE', 'COLLECTIF', 'ENGAGEMENT', 'CONTACT', 'COLLECTIF', '—', '—', '—'];
-      label.textContent = labels[i / 6] || '';
-      if (label.textContent && label.textContent !== '—') line.appendChild(label);
-    }
-  }
-
   // ── Scroll reveal ──
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -1254,40 +749,20 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // ── Subtle parallax on instrument line ──
-  const instrument = document.getElementById('instrument');
-  const glowPoint = document.getElementById('glowPoint');
-  let ticking = false;
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY;
-        const shift = Math.min(y * 0.035, 36);
-        if (instrument) instrument.style.transform = `translateY(${shift}px)`;
-        if (glowPoint) glowPoint.style.transform = `translateY(${shift * 1.2}px)`;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-
   // ══════════════════════════════════════════════════
   // CONFIGURATION SUPABASE
-  // → Remplacer ces deux valeurs après création du projet
-  // → Project Settings → API dans le dashboard Supabase
   // ══════════════════════════════════════════════════
-  const SUPABASE_URL  = 'https://pywsroaocjlprncwvixo.supabase.co';       // ex: https://abcdefgh.supabase.co
-  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5d3Nyb2FvY2pscHJuY3d2aXhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MDYwMzQsImV4cCI6MjA5ODk4MjAzNH0.BnVgQCCv1_KdpFUBnzO-f7v5BYAnJWqMJJQvtJspcd8';   // clé anon/public
+  const SUPABASE_URL  = 'https://pywsroaocjlprncwvixo.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5d3Nyb2FvY2pscHJuY3d2aXhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MDYwMzQsImV4cCI6MjA5ODk4MjAzNH0.BnVgQCCv1_KdpFUBnzO-f7v5BYAnJWqMJJQvtJspcd8';
 
   // ── Validation helpers ──
-const validators = {
-  name:      v => v.trim().length >= 2   ? '' : 'Merci d\'indiquer votre nom (2 caractères minimum).',
-  email:     v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Adresse email invalide.',
-  linkedin:  v => (!v.trim() || /^https?:\/\/.+/i.test(v.trim())) ? '' : 'Le lien doit commencer par http:// ou https://',
-  message:   v => v.trim().length >= 10  ? '' : 'Le message doit faire au moins 10 caractères.',
-  consent:   v => v ? '' : 'Vous devez accepter le traitement de vos données pour envoyer le formulaire.',
-};
+  const validators = {
+    name:        v => v.trim().length >= 2   ? '' : 'Merci d\'indiquer votre nom (2 caractères minimum).',
+    email:       v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Adresse email invalide.',
+    linkedin:    v => (!v.trim() || /^https?:\/\/.+/i.test(v.trim())) ? '' : 'Le lien doit commencer par http:// ou https://',
+    message:     v => v.trim().length >= 10  ? '' : 'Le message doit faire au moins 10 caractères.',
+    consent:     v => v ? '' : 'Vous devez accepter le traitement de vos données pour envoyer le formulaire.',
+  };
 
   function setFieldState(id, errorMsg) {
     const input = document.getElementById(id);
@@ -1302,31 +777,30 @@ const validators = {
     }
   }
 
-function validateAll() {
-  const nom       = document.getElementById('name').value;
-  const email     = document.getElementById('email').value;
-  const linkedin  = document.getElementById('linkedin').value;
-  const message   = document.getElementById('message').value;
-  const consent   = document.getElementById('consent').checked;
+  function validateAll() {
+    const nom      = document.getElementById('name').value;
+    const email    = document.getElementById('email').value;
+    const linkedin = document.getElementById('linkedin').value;
+    const message  = document.getElementById('message').value;
+    const consent  = document.getElementById('consent').checked;
 
-  const errors = {
-    name:     validators.name(nom),
-    email:    validators.email(email),
-    linkedin: validators.linkedin(linkedin),
-    message:  validators.message(message),
-    consent:  validators.consent(consent),
-  };
+    const errors = {
+      name:     validators.name(nom),
+      email:    validators.email(email),
+      linkedin: validators.linkedin(linkedin),
+      message:  validators.message(message),
+      consent:  validators.consent(consent),
+    };
 
-  Object.entries(errors).forEach(([id, msg]) => setFieldState(id, msg));
-  return Object.values(errors).every(e => e === '');
-}
+    Object.entries(errors).forEach(([id, msg]) => setFieldState(id, msg));
+    return Object.values(errors).every(e => e === '');
+  }
 
-  // Validation live sur blur
   ['name', 'email', 'linkedin', 'message'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('blur', () => {
       setFieldState(id, validators[id](el.value));
-   });
+    });
   });
 
   // ── Supabase insert ──
@@ -1351,7 +825,6 @@ function validateAll() {
   const form        = document.getElementById('contactForm');
   const successEl   = document.getElementById('formSuccess');
   const errorGlobal = document.getElementById('formErrorGlobal');
-  const errorText   = document.getElementById('formErrorText');
   const submitBtn   = document.getElementById('submitBtn');
 
   form.addEventListener('submit', async (e) => {
@@ -1360,9 +833,8 @@ function validateAll() {
 
     if (!validateAll()) return;
 
-    // Honeypot check
     const honeypot = form.querySelector('input[name="website"]');
-    if (honeypot && honeypot.value) return; // bot détecté, abandon silencieux
+    if (honeypot && honeypot.value) return;
 
     submitBtn.disabled = true;
     submitBtn.classList.add('loading');
@@ -1387,7 +859,6 @@ function validateAll() {
       submitBtn.disabled = false;
       submitBtn.classList.remove('loading');
       errorGlobal.classList.add('visible');
-      // Message générique côté user, détail en console seulement
     }
   });
 </script>
